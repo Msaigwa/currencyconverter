@@ -28,34 +28,22 @@ class Converter extends Component {
 
     // Initializes the currencies with values from the api
     componentDidMount() {
-        /* axios
-            .get("http://api.openrates.io/latest")
-            .then(response => { */
-                // Initialized with 'EUR' because the base currency is 'EUR'
-                // and it is not included in the response
+       
                 const currencyAr = ["EUR"]
                 for (const key in this.rates.rates) {
                     currencyAr.push(key)
                 }
                 this.setState({ currencies: currencyAr.sort() })
-            /* })
-            .catch(err => {
-                console.log("Opps", err.message);
-            }); */
+           
     }
 
     // Event handler for the conversion
     convertHandler = () => {
         if (this.state.fromCurrency !== this.state.toCurrency) {
-           /*  axios
-                .get(`http://api.openrates.io/latest?base=${this.state.fromCurrency}&symbols=${this.state.toCurrency}`)
-                .then(response => { */
+          
                     const result = this.state.amount * (this.rates.rates[this.state.toCurrency]);
                     this.setState({ result: result.toFixed(5) })
-               /*  })
-                .catch(err => {
-                    console.log("Opps", err.message);
-                }); */
+              
         } else {
             this.setState({ result: "You cant convert the same currency!" })
         }
@@ -74,7 +62,7 @@ class Converter extends Component {
     render() {
         return (
             <div className="Converter">
-                <h2><span>Currency Converter </span> </h2>
+                <h2><span>Shumba money Exchange Currency Converter </span> </h2>
                 <div className="Form">
                     <input
                         name="amount"
